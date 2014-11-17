@@ -1,0 +1,50 @@
+{
+	"default" : {
+		"type" : "auto",
+		"name" : "auto",
+		"connection" : "auto",
+		"recordBased" : true,
+		"pageBreakNewRecord" : false
+	},
+	"propertiesForm" :
+	{
+		"___1" : {
+			"label" : "GENERAL"
+		},
+		"Type" : {
+			"type" : "inputtext",
+			"map" : "type",
+			"readOnly" : true
+		},
+		"Name" : {
+			"type" : "inputtext",
+			"map" : "name"
+		},
+		"___2" : {
+			"label" : "DATA"
+		},
+		"Connection" : {
+			"type" : "dropdown",
+			"map" : "connection"
+		},
+		"SQL Query" : {
+			"type" : "textarea",
+			"map" : "sqlquery"
+		},
+		"Record-based" : {
+			"type" : "checkbox",
+			"map" : "recordBased"
+		},
+		"Page Break New Record" : {
+			"type" : "checkbox",
+			"map" : "pageBreakNewRecord"
+		},
+		"___3" : {
+			"label" : "CONTENT"
+		},
+		"HTML" : {
+			"type" : "textarea",
+			"map" : "html"
+		}
+	}
+}

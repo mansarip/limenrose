@@ -1,0 +1,12 @@
+[
+	{
+		"name":"MySQL",
+		"type":"mysql",
+		"extension":"mysqli"
+	},
+	{
+		"name":"Sybase",
+		"type":"sybase",
+		"extension":"sybase_ct"
+	}
+]

@@ -1,0 +1,42 @@
+{
+	"default" : {
+		"type" : "auto",
+		"name" : "auto",
+		"pagefooter" : false,
+		"dateFormat" : "d m Y"
+	},
+	"propertiesForm" :
+	{
+		"___1" : {
+			"label" : "GENERAL"
+		},
+		"Type" : {
+			"type" : "inputtext",
+			"map" : "type",
+			"readOnly" : true
+		},
+		"Name" : {
+			"type" : "inputtext",
+			"map" : "name"
+		},
+		"Text (Left)" : {
+			"type" : "inputtext",
+			"map" : "textLeft"
+		},
+		"Text (Right)" : {
+			"type" : "inputtext",
+			"map" : "textRight"
+		},
+		"Date Format" : {
+			"type" : "inputtext",
+			"map" : "dateFormat"
+		},
+		"___2" : {
+			"label" : "OTHERS"
+		},
+		"Page Footer" : {
+			"type" : "checkbox",
+			"map" : "pagefooter"
+		}
+	}
+}
