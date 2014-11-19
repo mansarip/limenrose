@@ -1,3 +1,0 @@
-- Login page
-- Create component wizard
-- csv
