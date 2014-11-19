@@ -7,7 +7,8 @@ function Encrypt($string, $key)
 
 function Decrypt($string, $key)
 {
-	return rtrim( mcrypt_decrypt(MCRYPT_RIJNDAEL_256, $key, $string, MCRYPT_MODE_ECB) );
+	//return rtrim( mcrypt_decrypt(MCRYPT_RIJNDAEL_256, $key, $string, MCRYPT_MODE_ECB) );
+	return mcrypt_decrypt(MCRYPT_RIJNDAEL_256, $key, $string, MCRYPT_MODE_ECB);
 }
 
 

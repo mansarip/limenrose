@@ -10,10 +10,10 @@ Lime &amp; Rose Reporting Tool dibina menggunakan PHP.
 - Tutup warning & notice message
 
 #### Error Code
-- **ERROR000** : Report not specified
-- **ERROR001** : Empty report name
-- **ERROR002** : Report not found
-- **ERROR003** : Invalid report file
+**LNR-ERR000** : Report not specified
+**LNR-ERR001** : Empty report name
+**LNR-ERR002** : Report not found
+**LNR-ERR003** : Invalid report file [ corrupted source ]
 
 #### Report Designer
 ##### Publish

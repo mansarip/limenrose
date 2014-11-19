@@ -1,55 +1,39 @@
 <?php
 
 // tutup segala error reporting
-//error_reporting(0);
+error_reporting(0);
 
 // file berkenaan
 include('config.php');
 include('../libs/php/func.encrypt.php');
+include('../libs/php/func.error.php');
 
-$a = file_get_contents('a.lnre');
-$a = Decrypt($a, KEY);
-$a = json_decode($a, true);
+# ============================ #
+# PROSES VALIDATE FILE         #
+# ============================ #
 
-echo '<pre>';
-print_r($a);
-echo '</pre>';
-
-exit;
-
-if (!isset($_GET['file']))
-{
-	echo '<b>ERROR000</b> : Report not specified';
-	exit;
-}
+if (!isset($_GET['file'])) DisplayError(0);
 
 // get filename
 $filename = $_GET['file'];
 
 // jika tidak nyatakan filename
-if ($filename == '')
-{
-	echo '<b>ERROR001</b> : Empty report name';
-	exit;
-}
+if ($filename == '') DisplayError(1);
 
 // baca file dan decrypt
 $source = file_get_contents(PUBLISH_PATH . $filename . '.lnre');
-if (!$source)
-{
-	echo '<b>ERROR002</b> : Report not found';
-	exit;
-}
+if (!$source) DisplayError(2);
+
+# ============================ #
+# SOURCE PROCESSING            #
+# ============================ #
 
 // source processing
 $source = Decrypt($source, KEY);
-//$source = json_decode($source);
+$source = json_decode($source, true);
 
-echo mb_detect_encoding($source);
-
-echo '<pre>';
-print_r($source);
-echo '</pre>';
+// valid tak source?
+if (!is_array($source)) DisplayError(3);
 
 exit;
 
