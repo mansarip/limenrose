@@ -1,11 +1,13 @@
 <?php
 
 // tutup segala error reporting
-error_reporting(0);
+//error_reporting(0);
 
 // file berkenaan
 include('config.php');
 include('class.connection.php');
+include('class.parameter.php');
+include('class.query.php');
 include('../libs/php/func.encrypt.php');
 include('../libs/php/func.error.php');
 
@@ -41,13 +43,42 @@ if (!is_array($source)) DisplayError(3);
 # FETCH DATA                   #
 # ============================ #
 
+// parameter objects
+$parameter = array();
+foreach ((array)$source['data']['parameter'] as $paramName => $paramDetails)
+{
+	$parameter[$paramName] = new Parameter($paramDetails);
+	$parameter[$paramName]->name = $paramName;
+}
+
+echo '<pre>';
+print_r($parameter);
+echo '</pre>';
+
+// connection object
 $conn = new Connection($source);
 $conn->Init();
 
-echo '<pre>';
-print_r($source);
-echo '</pre>';
+// query objects
+$query = array();
+foreach ((array)$source['data']['query'] as $queryName => $queryDetails)
+{	
+	$q = new Query($queryDetails);
+	$q->name = $queryName;
+	$q->ReplaceParam($parameter);
+	$query[$queryName] = $q;
+}
 
+// query object
+/*$query = array();
+foreach ((array)$source['data']['query'] as $queryDetails)
+{
+	$q = new Query($queryDetails);
+	$q->ReplaceVariables();
+	$q->Execute($conn);
+	$query[] = $q;
+}
+*/
 exit;
 
 ?>
