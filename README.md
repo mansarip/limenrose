@@ -15,6 +15,7 @@ LNR-ERR000 : Report not specified
 LNR-ERR001 : Empty report name
 LNR-ERR002 : Report not found
 LNR-ERR003 : Invalid report file [ corrupted source ]
+LNR-ERR010 : MySQL Connect Error (1045) Access denied
 ```
 
 #### Report Designer
