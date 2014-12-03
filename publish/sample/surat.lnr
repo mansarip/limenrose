@@ -23,7 +23,12 @@
 				"default":""
 			}
 		},
-		"query":{}
+		"query":{
+			"Q1":{
+				"mapping":"master",
+				"sql":"select * from employees where emp_no = '{PARAM|emp_no}'"
+			}
+		}
 	},
 	"layout":{
 		"format":"A4",
