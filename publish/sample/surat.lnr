@@ -9,11 +9,21 @@
 			"type":"mysql",
 			"host":"localhost",
 			"port":"3306",
+			"socket":"",
 			"sid":"",
 			"serviceName":"",
 			"username":"root",
-			"password":"11111"
-		}
+			"password":"11111",
+			"dbname":"employees"
+		},
+		"parameter":{
+			"emp_no":{
+				"dataType":"number",
+				"maxLength":5,
+				"default":""
+			}
+		},
+		"query":{}
 	},
 	"layout":{
 		"format":"A4",

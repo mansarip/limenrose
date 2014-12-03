@@ -5,6 +5,7 @@ error_reporting(0);
 
 // file berkenaan
 include('config.php');
+include('class.connection.php');
 include('../libs/php/func.encrypt.php');
 include('../libs/php/func.error.php');
 
@@ -24,6 +25,7 @@ if ($filename == '') DisplayError(1);
 $source = file_get_contents(PUBLISH_PATH . $filename . '.lnre');
 if (!$source) DisplayError(2);
 
+
 # ============================ #
 # SOURCE PROCESSING            #
 # ============================ #
@@ -34,6 +36,17 @@ $source = json_decode($source, true);
 
 // valid tak source?
 if (!is_array($source)) DisplayError(3);
+
+# ============================ #
+# FETCH DATA                   #
+# ============================ #
+
+$conn = new Connection($source);
+$conn->Init();
+
+echo '<pre>';
+print_r($source);
+echo '</pre>';
 
 exit;
 

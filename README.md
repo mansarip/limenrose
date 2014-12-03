@@ -20,3 +20,10 @@ LNR-ERR003 : Invalid report file [ corrupted source ]
 #### Report Designer
 ##### Publish
 Pengguna boleh terus publish report melalui report designer. Satu file akan dihasilkan dalam folder `publish/<%project%>`. File tersebut dihasilkan dalam bentuk binary.
+
+#### Development Logs
+19/11/2014
+File enrypt.php dihasilkan untuk convert surat.lnr kepada surat.lnre - Luqman
+
+02/12/2014
+Masukkan error mysql ke dalam DisplayError function. - Luqman

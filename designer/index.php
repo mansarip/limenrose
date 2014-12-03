@@ -24,7 +24,7 @@ $designerType = $_GET['type'];
 		<h1>Choose designer type :</h1>
 		<a class="icon a" href="?type=component"><img src="images/new-component.png"/><br/>Component Based</a>
 		<a class="icon b" href="./grid"><img src="images/new-word.png"/><br/>Word Processor</a>
-		<a class="icon c" href="?type=banded"><img src="images/new-band.png"/><br/>Banded Report</a>
+		<a class="icon c" href="./band"><img src="images/new-band.png"/><br/>Banded Report</a>
 
 		<div class="description a">
 			<h3>Component Based</h3>
