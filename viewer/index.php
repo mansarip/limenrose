@@ -1,92 +1,45 @@
 <?php
 
-// tutup segala error reporting
-//error_reporting(0);
-
-// file berkenaan
+error_reporting(0);
 include('config.php');
-include('class.connection.php');
-include('class.parameter.php');
-include('class.query.php');
 include('../libs/php/func.encrypt.php');
 include('../libs/php/func.error.php');
 
-# ============================ #
-# PROSES VALIDATE FILE         #
-# ============================ #
-
+// process dapatkan nama report
 if (!isset($_GET['file'])) DisplayError(0);
-
-// get filename
 $filename = $_GET['file'];
-
-// jika tidak nyatakan filename
 if ($filename == '') DisplayError(1);
-
-// baca file dan decrypt
 $source = file_get_contents(PUBLISH_PATH . $filename . '.lnre');
 if (!$source) DisplayError(2);
-
-
-# ============================ #
-# SOURCE PROCESSING            #
-# ============================ #
-
-// source processing
 $source = Decrypt($source, KEY);
 $source = json_decode($source, true);
-
-// valid tak source?
 if (!is_array($source)) DisplayError(3);
+$reportName = $source['general']['reportName'];
 
-# ============================ #
-# FETCH DATA                   #
-# ============================ #
+// post variables bawa ke iframe
+$_POST['token'] = 'ABC';
+$postVariablesInJSON = json_encode($_POST);
 
-// parameter objects
-$parameter = array();
-foreach ((array)$source['data']['parameter'] as $paramName => $paramDetails)
+// remove output variable get
+$queryStringReBuild = '';
+foreach ((array)$_GET as $getName => $getValue)
 {
-	$parameter[$paramName] = new Parameter($paramDetails);
-	$parameter[$paramName]->name = $paramName;
+	if ($getName != 'output') $queryStringReBuild .= '&' . $getName . '=' . $getValue;
 }
 
-echo '<pre>';
-print_r($parameter);
-echo '</pre>';
+// output type
+$output = $_GET['output']; //html, pdf, csv
 
-// connection object
-$conn = new Connection($source);
-$conn->Init();
-
-// query objects
-$query = array();
-foreach ((array)$source['data']['query'] as $queryName => $queryDetails)
-{	
-	$q = new Query($queryDetails);
-	$q->name = $queryName;
-	$q->ReplaceParam($parameter);
-	$query[$queryName] = $q;
-}
-
-// query object
-/*$query = array();
-foreach ((array)$source['data']['query'] as $queryDetails)
-{
-	$q = new Query($queryDetails);
-	$q->ReplaceVariables();
-	$q->Execute($conn);
-	$query[] = $q;
-}
-*/
-exit;
+// url content
+if     ($output == 'html') { $url = 'output.html.php?' . $_SERVER['QUERY_STRING']; }
+elseif ($output == 'pdf')  { $url = 'output.pdf.php?' . $_SERVER['QUERY_STRING']; }
+else   { $url = 'output.html.php?' . $_SERVER['QUERY_STRING']; }
 
 ?>
-
 <!doctype html>
 <head>
 	<meta charset="utf-8">
-	<title>Lime & Rose : Report Viewer</title>
+	<title>Lime & Rose Report Viewer : <?php echo $reportName ?></title>
 	<link rel="icon" type="image/ico" href="../favicon.ico">
 	<link rel="stylesheet" href="../libs/dhtmlx/dhtmlx.css">
 	<script type="text/javascript" src="../libs/dhtmlx/dhtmlx.js"></script>
@@ -107,9 +60,27 @@ exit;
 		var layout = new dhtmlXLayoutObject('viewer','1C');
 		
 		var cell = layout.cells('a');
-		cell.setText('Report Viewer');
+		cell.setText('<?php echo $reportName ?>');
+		cell.attachURL('<?php echo $url ?>', null, <?php echo $postVariablesInJSON ?>);
 
+		var opts = [
+			['btnHTML', 'obj', 'HTML', 'blue-document-code.png'],
+			['btnPDF', 'obj', 'PDF', 'document-pdf-text.png'],
+			['btnCSV', 'obj', 'CSV', 'document-excel-csv.png']
+		];
 		var toolbar = cell.attachToolbar();
+		toolbar.setIconsPath('../libs/dhtmlx/imgs/dhxtoolbar_skyblue/');
+		toolbar.addButtonSelect(1, 1, 'Output Format', opts, 'report-paper.png');
+		toolbar.addSeparator(4,2);
+		toolbar.addButton(5,3,'Print','printer.png');
+		toolbar.addSeparator(6,4);
+		toolbar.addButton(7,5,'Download','drive-download.png');
+
+		toolbar.attachEvent('onClick', function(buttonId){
+			if (buttonId === 'btnHTML') window.location.href = '?<?php echo $queryStringReBuild . "&output=html"?>';
+			if (buttonId === 'btnPDF') window.location.href = '?<?php echo $queryStringReBuild . "&output=pdf"?>';
+		});
+
 		var status = cell.attachStatusBar();
 		status.setText('Ready');
 	})();

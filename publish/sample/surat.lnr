@@ -20,13 +20,20 @@
 			"emp_no":{
 				"dataType":"number",
 				"maxLength":5,
-				"default":""
+				"default":"",
+				"type":"get"
+			},
+			"token":{
+				"dataType":"string",
+				"maxLength":3,
+				"default":"",
+				"type":"post"
 			}
 		},
 		"query":{
 			"Q1":{
 				"mapping":"master",
-				"sql":"select * from employees where emp_no = '{PARAM|emp_no}'"
+				"sql":"select * from employees where emp_no = '{GET|emp_no}'"
 			}
 		}
 	},
@@ -54,7 +61,23 @@
 					"children":{},
 					"parent":"report",
 					"skipRender":false,
-					"item":{},
+					"item":[
+						{
+							"type":"image",
+							"source":"logo.jpg",
+							"width":0,
+							"height":0
+						},
+						{
+							"type":"label",
+							"text":"Windows",
+							"width":220,
+							"height":48,
+							"borderEnable":1,
+							"borderStyle":"solid",
+							"borderWidth":1
+						}
+					],
 					"heightRemain":5
 				},
 				"header":{

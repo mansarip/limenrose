@@ -16,6 +16,9 @@ Pengguna boleh terus publish report melalui report designer. Satu file akan diha
 ###### Query & Group Mapping
 Setiap query akan menghasilkan satu dataset iaitu hasil execution query tersebut. Dalam satu report, boleh ada banyak query tetapi masih menggunakan satu connection yang sama. Setiap group mesti ada satu dataset. Dalam satu report mesti ada paling kurang 1 group yang dipanggil "master". Group master ini memang ada secara default dan ia merujuk kepada report itu sendiri.
 
+###### Parameter
+Sumber parameter boleh datang dari POST, GET, SESSION.
+
 #### Error Code
 ```
 LNR-ERR000 : Report not specified

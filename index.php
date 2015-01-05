@@ -37,7 +37,7 @@ if (isset($_POST['task']) && $_POST['task'] == 'checkAuth')
 }
 
 // jika logged in, pergi ke manager
-if ($_SESSION['logged'])
+if (isset($_SESSION['logged']))
 {
 	header("Location: manager/");
 }

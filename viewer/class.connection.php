@@ -46,6 +46,40 @@ class Connection
 			}
 		}
 	}
+
+	public function Execute($query)
+	{
+		if ($this->type == 'mysql')
+		{
+			$result = mysqli_query($this->conn, $query);
+
+			// result akan disimpan dalam bentuk assoc array
+			// menggunakan "mysqli_fetch_all"
+			// tetapi php mesti mempunyai mysqlnd (mysql native driver)
+			// jika tiada, fallback menggunakan cara biasa
+
+			$mysqlnd = function_exists('mysqli_fetch_all');
+
+			if ($mysqlnd)
+			{
+				return mysqli_fetch_all($result,MYSQLI_ASSOC);	
+			}
+			else
+			{
+				$records = array();
+				while($row = mysqli_fetch_assoc($result))
+				{
+					$records[] = $row;
+				}
+				return $records;
+			}	
+		}
+	}
+
+	public function Close()
+	{
+		mysqli_close($this->conn);
+	}
 }
 
 ?>

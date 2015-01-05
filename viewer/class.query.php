@@ -18,7 +18,19 @@ class Query
 
 	public function ReplaceParam($parameter)
 	{
-		
+		foreach((array)$parameter as $paramName => $param)
+		{
+			if ($param->type == 'GET')
+			{
+				$str = '{GET|'.$paramName.'}';
+				$this->sql = str_replace($str, $param->value, $this->sql);
+			}
+		}
+	}
+
+	public function Execute($conn)
+	{
+		$this->result = $conn->Execute($this->sql);
 	}
 }
 
