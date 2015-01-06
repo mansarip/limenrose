@@ -1,19 +1,27 @@
 <?php
 
-error_reporting(0);
+//error_reporting(0);
+
+// includes
 include('config.php');
 include('../libs/php/func.encrypt.php');
 include('../libs/php/func.error.php');
 
-// process dapatkan nama report
+// proses dapatkan nama report
 if (!isset($_GET['file'])) DisplayError(0);
 $filename = $_GET['file'];
 if ($filename == '') DisplayError(1);
+
+// jika file not found
 $source = file_get_contents(PUBLISH_PATH . $filename . '.lnre');
 if (!$source) DisplayError(2);
+
+// decrypt dan jadikan array
 $source = Decrypt($source, KEY);
 $source = json_decode($source, true);
 if (!is_array($source)) DisplayError(3);
+
+// report name init
 $reportName = $source['general']['reportName'];
 
 // post variables bawa ke iframe

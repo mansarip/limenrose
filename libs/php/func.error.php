@@ -13,7 +13,7 @@ function DisplayError($code)
 		case  0: $msg = 'Report not specified'; break;
 		case  1: $msg = 'Empty report name'; break;
 		case  2: $msg = 'Report not found'; break;
-		case  3: $msg = 'Invalid report file [ corrupted source ]'; break;
+		case  3: $msg = 'Invalid report file (corrupted source)'; break;
 		case 10: $msg = 'MySQL Connect Error (1045) Access denied';
 	}
 

@@ -40,4 +40,7 @@ File enrypt.php dihasilkan untuk convert surat.lnr kepada surat.lnre - Luqman
 
 02/12/2014
 Masukkan error mysql ke dalam DisplayError function. - Luqman
+
+05/01/2015
+Tukar encryption cipher kepada "MCRYPT_BLOWFISH" (ada error berlaku lepas update php ke 5.6) - Luqman
 ````
