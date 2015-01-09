@@ -2911,7 +2911,7 @@ div.dhx_toolbar_slider_label_dhx_skyblue {
   border-right: 1px solid transparent;
   border-left: 1px solid transparent;
   font-family: Arial;
-  font-size: 12px;
+  font-size: 11px;
   overflow: hidden;
   padding: 0px 0px 0px 0px;
 }
@@ -3008,7 +3008,7 @@ div.gridbox table.hdr td {
   border-color: #f7f7f7 #808080 #808080 #f7f7f7;
   text-align: center;
   margin: 0px;
-  padding: 7px 0px 7px 0px ;
+  padding: 5px 0px 5px 0px ;
   font-weight: normal;
   -moz-user-select: none;
   -moz-user-select: -moz-none;
@@ -3261,7 +3261,7 @@ div.gridbox_dhx_skyblue.gridbox table.hdr td {
   border-color: #ffffff #bdbdbd #bdbdbd #ffffff;
   background-color: transparent;
   font-family: Arial;
-  font-size: 12px;
+  font-size: 11px;
   color: #404040;
   vertical-align: top;
   text-align: left;

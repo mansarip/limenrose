@@ -44,3 +44,7 @@ Masukkan error mysql ke dalam DisplayError function. - Luqman
 05/01/2015
 Tukar encryption cipher kepada "MCRYPT_BLOWFISH" (ada error berlaku lepas update php ke 5.6) - Luqman
 ````
+
+#### Testing
+1. Report kosong, tanpa connection, tanpa layout [X]
+2. Report tanpa connection, tapi ada layout [X]

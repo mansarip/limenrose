@@ -1,0 +1,9 @@
+[
+	{"id":"new", "type":"button", "text":"New", "img":"blue-document.png"},
+	{"id":"parameter", "type":"button", "text":"Parameter", "img":"paper-plane.png"},
+	{"id":"publish", "type":"button", "text":"Publish", "img":"fruit-lime.png"},
+	{"id":"refresh", "type":"button", "text":"Refresh", "img":"arrow-circle-315.png"},
+	{"id":"zoomIn", "type":"button", "text":"", "img":"magnifier-zoom-in.png"},
+	{"id":"zoomOut", "type":"button", "text":"", "img":"magnifier-zoom-out.png"},
+	{"id":"preview", "type":"button", "text":"Preview", "img":"magnifier-left.png"}
+]

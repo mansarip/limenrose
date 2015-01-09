@@ -1,0 +1,45 @@
+{
+	"items":[
+		{"id":"app", "text":"L&R Report Designer", "enabled":false},
+		{"id":"file", "text":"File", "items":[
+			{"id":"new", "text":"New", "img":"blue-document.png"},
+			{"id":"open", "text":"Open", "img":"folder-horizontal-open.png"},
+			{"id":"sep1", "type":"separator"},
+			{"id":"save", "text":"Save", "img":"disk-black.png"},
+			{"id":"sep2", "type":"separator"},
+			{"id":"preview", "text":"Preview", "img":"magnifier-left.png"},
+			{"id":"sep3", "type":"separator"},
+			{"id":"export", "text":"Export", "img":"document-export.png", "items":[
+				{"id":"json", "text":"JSON", "img":"json.png"},
+				{"id":"lnre", "text":"LNRE", "img":"script-code.png"}
+			]},
+			{"id":"publish", "text":"Publish", "img":"fruit-lime.png"}
+		]},
+		{"id":"edit", "text":"Edit", "items":[
+			{"id":"undo", "text":"Undo", "img":"arrow-curve-180-left.png"},
+			{"id":"redo", "text":"Redo", "img":"arrow-curve.png"},
+			{"id":"sep4", "type":"separator"},
+			{"id":"cut", "text":"Cut", "img":"scissors.png"},
+			{"id":"copy", "text":"Copy", "img":"document-copy.png"},
+			{"id":"paste", "text":"Paste", "img":"clipboard-paste.png"},
+			{"id":"sep5", "type":"separator"},
+			{"id":"delete", "text":"Delete", "img":"cross.png"},
+			{"id":"sep6", "type":"separator"},
+			{"id":"parameter", "text":"Parameter", "img":"paper-plane.png"},
+			{"id":"reportProperties", "text":"Report Properties", "img":"property.png"}
+		]},
+		{"id":"view", "text":"View", "items":[
+			{"id":"zoomIn", "text":"Zoom In", "img":"magnifier-zoom-in.png"},
+			{"id":"zoomOut", "text":"Zoom Out", "img":"magnifier-zoom-out.png"},
+			{"id":"resetZoom", "text":"Reset Zoom", "img":"magnifier-zoom-fit.png"},
+			{"id":"sep7", "type":"separator"},
+			{"id":"refreshLayout", "text":"Refresh Layout", "img":"arrow-circle-315.png"}
+		]},
+		{"id":"help", "text":"Help", "items":[
+			{"id":"onlineHelp", "text":"Online Help", "img":"book-open-text.png"},
+			{"id":"bug", "text":"Report Bug", "img":"bug--exclamation.png"},
+			{"id":"sep8", "type":"separator"},
+			{"id":"about", "text":"About", "img":"information-italic.png"}
+		]}
+	]
+}

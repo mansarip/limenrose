@@ -1,5 +1,8 @@
 <?php
 
+// development : show all error, tapi bukan notice
+error_reporting(E_ALL & ~E_NOTICE);
+
 // preprocess untuk source dan data
 include('preprocess.data.php');
 
@@ -21,7 +24,7 @@ class LNRREPORT extends TCPDF
 $pdf = new LNRREPORT($orientation=$report->orientation, $unit='mm', $format=$report->format, $unicode=true, $encoding='UTF-8', $diskcache=false, $pdfa=false);
 
 echo '<pre>';
-print_r($report);
+print_r($source);
 echo '</pre>';
 
 $pdf->Output($reportName.'.pdf', 'I');

@@ -18,12 +18,17 @@ function App()
 	this.elements = {
 		id:0,
 		item:[
-			{id:1,text:"first"},
-			{id:2, text:"middle",child:"1",im0:"book.gif",
+			{id:'report', text:"Report",child:"1",im1:"application-blue.png", im2:"application-blue.png",
 			item:[
-				{id:"21", text:"child"}
-			]},
-			{id:3,text:"last"}
+				{id:'pageHeader', text:"Page Header", im0:"application.png"},
+				{id:'reportHeader', text:"Report Header", im0:"application.png"},
+				{id:'header', text:"Header", im0:"application.png"},
+				{id:'body', text:"Body", im0:"application.png"},
+				{id:'noData', text:"No Data", im0:"application.png"},
+				{id:'footer', text:"Footer", im0:"application.png"},
+				{id:'reportFooter', text:"Report Footer", im0:"application.png"},
+				{id:'pageFooter', text:"Page Footer", im0:"application.png"}
+			]}
 		]
 	};
 	this.band = {};
@@ -54,26 +59,33 @@ function App()
 		// element tree
 		var elementTree = tabElement.attachTree();
 		elementTree.setImagePath(this.imagePath + 'dhxtree_skyblue/');
-		elementTree.loadJSONObject(this.elements);
+		elementTree.loadJSONObject(this.elements, function(){
+			elementTree.openItem('report');
+		});
 
 		var cellB = this.layout.cells('b');
 		cellB.hideHeader();
 
 		var toolBarWorkspace = cellB.attachToolbar();
 		toolBarWorkspace.setIconsPath(this.imagePath + 'dhxtoolbar_skyblue/');
-		toolBarWorkspace.addButton('a',1,'','edit-style.png',null);
-		toolBarWorkspace.addButton('b',2,'','ui-text-field-format.png',null);
+		toolBarWorkspace.addButton('label',1,'','edit-style.png',null);
+		toolBarWorkspace.addButton('field',2,'','ui-text-field-format.png',null);
 		toolBarWorkspace.addSeparator('sep1',3);
-		toolBarWorkspace.addButton('c',4,'Image','',null);
-		toolBarWorkspace.addButton('d',5,'Chart','',null);
+		toolBarWorkspace.addButton('image',4,'','picture.png',null);
+		toolBarWorkspace.addButton('chart',5,'','chart.png',null);
 		toolBarWorkspace.addSeparator('sep2',6);
-		toolBarWorkspace.addButton('e',7,'Rectangle','',null);
+		toolBarWorkspace.addButton('rectangle',7,'','layer-shape.png',null);
 		toolBarWorkspace.addSeparator('sep3',8);
-		toolBarWorkspace.addButton('f',9,'Barcode','',null);
-		toolBarWorkspace.addButton('g',10,'QRCode','',null);
+		toolBarWorkspace.addButton('barcode',9,'','barcode.png',null);
+		toolBarWorkspace.addButton('qrcode',10,'','barcode-2d.png',null);
 
-		toolBarWorkspace.setItemToolTip('a','Label');
-		toolBarWorkspace.setItemToolTip('b','Field');
+		toolBarWorkspace.setItemToolTip('label','Label');
+		toolBarWorkspace.setItemToolTip('field','Field');
+		toolBarWorkspace.setItemToolTip('image','Image');
+		toolBarWorkspace.setItemToolTip('chart','Chart');
+		toolBarWorkspace.setItemToolTip('rectangle','Rectangle');
+		toolBarWorkspace.setItemToolTip('barcode','Barcode');
+		toolBarWorkspace.setItemToolTip('qrcode','QR Code');
 
 		var cellC = this.layout.cells('c');
 		cellC.setText('Properties');
@@ -86,31 +98,32 @@ function App()
 	App.prototype.MenuInit = function()
 	{
 		this.menu = this.layout.attachMenu();
-		this.menu.addNewChild(null, 0, "file", "File");
-		this.menu.addNewChild(null, 1, "edit", "Edit");
-		this.menu.addNewChild(null, 2, "view", "View");
-		this.menu.addNewChild(null, 3, "help", "Help");
+		this.menu.loadStruct('json/app.menu.json');
+		this.menu.setIconsPath(this.imagePath + 'dhxmenu_skyblue/');
 	};
 
 	App.prototype.ToolbarInit = function()
 	{
 		this.toolbar = this.layout.attachToolbar();
+		this.toolbar.loadStruct('json/app.toolbar.json');
 		this.toolbar.setIconsPath(this.imagePath + 'dhxtoolbar_skyblue/');
-		this.toolbar.addButton('a',0,'New Report',null,null);
-		this.toolbar.addButton('b',1,'Parameter',null,null);
-		this.toolbar.addButton('c',2,'Publish',null,null);
+		
+		/*this.toolbar.setIconsPath(this.imagePath + 'dhxtoolbar_skyblue/');
+		this.toolbar.addButton('a',0,'New','blue-document.png',null);
+		this.toolbar.addButton('b',1,'Parameter','paper-plane.png',null);
+		this.toolbar.addButton('c',2,'Publish','fruit-lime.png',null);
 		this.toolbar.addSeparator('sep1',3);
 		this.toolbar.addButton('d',4,'Refresh','arrow-circle-315.png',null);
 		this.toolbar.addSeparator('sep2',5);
 		this.toolbar.addButton('e',6,'','magnifier-zoom-in.png',null);
 		this.toolbar.addButton('f',7,'','magnifier-zoom-out.png',null);
 		this.toolbar.addSeparator('sep3',8);
-		this.toolbar.addButton('g',9,'Preview','',null);
+		this.toolbar.addButton('g',9,'Preview','magnifier-left.png',null);
 
 		this.toolbar.attachEvent('onClick', function(id){
 			// refresh button
 			if (id === 'd') app.layout.cells('c').setWidth(250);
-		});
+		});*/
 	};
 
 	App.prototype.WorkspaceInit = function()
@@ -155,6 +168,15 @@ function App()
 		});
 	};
 
+	App.prototype.PropertiesGridInit = function()
+	{
+		this.propertiesGrid = this.layout.cells('c').attachGrid();
+		this.propertiesGrid.setHeader("Description, Value");
+		this.propertiesGrid.setColTypes('ro,ed');
+		this.propertiesGrid.init();
+		this.propertiesGrid.load('json/properties.band.json', null, 'json');
+	};
+
 	App.prototype.ConvertMmToPixel = function(mm)
 	{
 		mm = Number(mm);
@@ -167,4 +189,5 @@ function App()
 	this.MenuInit();
 	this.ToolbarInit();
 	this.WorkspaceInit();
+	this.PropertiesGridInit();
 }
