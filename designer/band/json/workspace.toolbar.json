@@ -1,0 +1,12 @@
+[
+	{"id":"label", "type":"button", "text":"", "img":"edit-style.png"},
+	{"id":"field", "type":"button", "text":"", "img":"ui-text-field-format.png"},
+	{"id":"sep1", "type":"separator"},
+	{"id":"image", "type":"button", "text":"", "img":"picture.png"},
+	{"id":"chart", "type":"button", "text":"", "img":"chart.png"},
+	{"id":"sep2", "type":"separator"},
+	{"id":"rectangle", "type":"button", "text":"", "img":"layer-shape.png"},
+	{"id":"sep3", "type":"separator"},
+	{"id":"barcode", "type":"button", "text":"", "img":"barcode.png"},
+	{"id":"qrcode", "type":"button", "text":"", "img":"barcode-2d.png"}
+]

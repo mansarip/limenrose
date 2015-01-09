@@ -1,9 +1,14 @@
 [
 	{"id":"new", "type":"button", "text":"New", "img":"blue-document.png"},
+	{"id":"sep1", "type":"separator"},
 	{"id":"parameter", "type":"button", "text":"Parameter", "img":"paper-plane.png"},
+	{"id":"sep2", "type":"separator"},
 	{"id":"publish", "type":"button", "text":"Publish", "img":"fruit-lime.png"},
+	{"id":"sep3", "type":"separator"},
 	{"id":"refresh", "type":"button", "text":"Refresh", "img":"arrow-circle-315.png"},
+	{"id":"sep4", "type":"separator"},
 	{"id":"zoomIn", "type":"button", "text":"", "img":"magnifier-zoom-in.png"},
 	{"id":"zoomOut", "type":"button", "text":"", "img":"magnifier-zoom-out.png"},
+	{"id":"sep5", "type":"separator"},
 	{"id":"preview", "type":"button", "text":"Preview", "img":"magnifier-left.png"}
 ]

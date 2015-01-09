@@ -15,22 +15,6 @@ function App()
 	this.toolbar = null;
 	this.statusBar = null;
 	this.imagePath = '../../libs/dhtmlx/imgs/';
-	this.elements = {
-		id:0,
-		item:[
-			{id:'report', text:"Report",child:"1",im1:"application-blue.png", im2:"application-blue.png",
-			item:[
-				{id:'pageHeader', text:"Page Header", im0:"application.png"},
-				{id:'reportHeader', text:"Report Header", im0:"application.png"},
-				{id:'header', text:"Header", im0:"application.png"},
-				{id:'body', text:"Body", im0:"application.png"},
-				{id:'noData', text:"No Data", im0:"application.png"},
-				{id:'footer', text:"Footer", im0:"application.png"},
-				{id:'reportFooter', text:"Report Footer", im0:"application.png"},
-				{id:'pageFooter', text:"Page Footer", im0:"application.png"}
-			]}
-		]
-	};
 	this.band = {};
 
 	// editor config
@@ -48,44 +32,20 @@ function App()
 
 		// tabs
 		var tabbar = cellA.attachTabbar();
-		tabbar.addTab('tabElement', 'Elements');
+		tabbar.addTab('tabStructure', 'Structure');
 		tabbar.addTab('tabDataSource', 'Data Source');
 
-		var tabElement = tabbar.cells('tabElement');
+		var tabStructure = tabbar.cells('tabStructure');
 		var tabDataSource = tabbar.cells('tabDataSource');
 
-		tabElement.setActive();
+		tabStructure.setActive();
 
 		// element tree
-		var elementTree = tabElement.attachTree();
+		var elementTree = tabStructure.attachTree();
 		elementTree.setImagePath(this.imagePath + 'dhxtree_skyblue/');
-		elementTree.loadJSONObject(this.elements, function(){
+		elementTree.loadJSON('json/structure.default.json', function(){
 			elementTree.openItem('report');
 		});
-
-		var cellB = this.layout.cells('b');
-		cellB.hideHeader();
-
-		var toolBarWorkspace = cellB.attachToolbar();
-		toolBarWorkspace.setIconsPath(this.imagePath + 'dhxtoolbar_skyblue/');
-		toolBarWorkspace.addButton('label',1,'','edit-style.png',null);
-		toolBarWorkspace.addButton('field',2,'','ui-text-field-format.png',null);
-		toolBarWorkspace.addSeparator('sep1',3);
-		toolBarWorkspace.addButton('image',4,'','picture.png',null);
-		toolBarWorkspace.addButton('chart',5,'','chart.png',null);
-		toolBarWorkspace.addSeparator('sep2',6);
-		toolBarWorkspace.addButton('rectangle',7,'','layer-shape.png',null);
-		toolBarWorkspace.addSeparator('sep3',8);
-		toolBarWorkspace.addButton('barcode',9,'','barcode.png',null);
-		toolBarWorkspace.addButton('qrcode',10,'','barcode-2d.png',null);
-
-		toolBarWorkspace.setItemToolTip('label','Label');
-		toolBarWorkspace.setItemToolTip('field','Field');
-		toolBarWorkspace.setItemToolTip('image','Image');
-		toolBarWorkspace.setItemToolTip('chart','Chart');
-		toolBarWorkspace.setItemToolTip('rectangle','Rectangle');
-		toolBarWorkspace.setItemToolTip('barcode','Barcode');
-		toolBarWorkspace.setItemToolTip('qrcode','QR Code');
 
 		var cellC = this.layout.cells('c');
 		cellC.setText('Properties');
@@ -107,27 +67,18 @@ function App()
 		this.toolbar = this.layout.attachToolbar();
 		this.toolbar.loadStruct('json/app.toolbar.json');
 		this.toolbar.setIconsPath(this.imagePath + 'dhxtoolbar_skyblue/');
-		
-		/*this.toolbar.setIconsPath(this.imagePath + 'dhxtoolbar_skyblue/');
-		this.toolbar.addButton('a',0,'New','blue-document.png',null);
-		this.toolbar.addButton('b',1,'Parameter','paper-plane.png',null);
-		this.toolbar.addButton('c',2,'Publish','fruit-lime.png',null);
-		this.toolbar.addSeparator('sep1',3);
-		this.toolbar.addButton('d',4,'Refresh','arrow-circle-315.png',null);
-		this.toolbar.addSeparator('sep2',5);
-		this.toolbar.addButton('e',6,'','magnifier-zoom-in.png',null);
-		this.toolbar.addButton('f',7,'','magnifier-zoom-out.png',null);
-		this.toolbar.addSeparator('sep3',8);
-		this.toolbar.addButton('g',9,'Preview','magnifier-left.png',null);
-
-		this.toolbar.attachEvent('onClick', function(id){
-			// refresh button
-			if (id === 'd') app.layout.cells('c').setWidth(250);
-		});*/
 	};
 
 	App.prototype.WorkspaceInit = function()
 	{
+		// toolbar workspace
+		var cellB = this.layout.cells('b');
+		cellB.hideHeader();
+
+		var toolBarWorkspace = cellB.attachToolbar();
+		toolBarWorkspace.setIconsPath(this.imagePath + 'dhxtoolbar_skyblue/');
+		toolBarWorkspace.loadStruct('json/workspace.toolbar.json');
+
 		// init new report
 		this.report = new Report();
 

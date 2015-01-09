@@ -1,0 +1,16 @@
+{
+	"id":0,
+	"item":[
+		{"id":"report", "text":"Report","child":"1","im1":"application-blue.png", "im2":"application-blue.png",
+		"item":[
+			{"id":"pageHeader", "text":"Page Header", "im0":"application.png"},
+			{"id":"reportHeader", "text":"Report Header", "im0":"application.png"},
+			{"id":"header", "text":"Header", "im0":"application.png"},
+			{"id":"body", "text":"Body", "im0":"application.png"},
+			{"id":"noData", "text":"No Data", "im0":"application.png"},
+			{"id":"footer", "text":"Footer", "im0":"application.png"},
+			{"id":"reportFooter", "text":"Report Footer", "im0":"application.png"},
+			{"id":"pageFooter", "text":"Page Footer", "im0":"application.png"}
+		]}
+	]
+}
