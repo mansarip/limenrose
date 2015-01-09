@@ -2917,13 +2917,13 @@ div.dhx_toolbar_slider_label_dhx_skyblue {
 }
 .dhxtree_dhx_skyblue .selectedTreeRow_lor,
 .dhxtree_dhx_skyblue .selectedTreeRow {
-  background-color: #dfdedd;
+  background-color: #427BF0;
   background-repeat: repeat-x;
-  border: 1px solid #b5b5b5;
-  color: #212121;
+  border: 1px solid #2569CE;
+  color: #FFF;
   line-height: 17px;
   font-family: Arial;
-  font-size: 12px;
+  font-size: 11px;
   overflow: hidden;
 }
 html > body .dhxtree_dhx_skyblue .selectedTreeRow,
@@ -3022,7 +3022,7 @@ div.gridbox table.obj td {
   border: 1px solid;
   border-color: #f7f7f7 #808080 #808080 #f7f7f7;
   font-family: Arial;
-  font-size: 12px;
+  font-size: 11px;
   -moz-user-select: none;
   -moz-user-select: -moz-none;
   overflow: hidden;

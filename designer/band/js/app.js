@@ -37,14 +37,21 @@ function App()
 
 		var tabStructure = tabbar.cells('tabStructure');
 		var tabDataSource = tabbar.cells('tabDataSource');
-
+		
 		tabStructure.setActive();
 
-		// element tree
-		var elementTree = tabStructure.attachTree();
-		elementTree.setImagePath(this.imagePath + 'dhxtree_skyblue/');
-		elementTree.loadJSON('json/structure.default.json', function(){
-			elementTree.openItem('report');
+		// structure tree
+		var structureTree = tabStructure.attachTree();
+		structureTree.setImagePath(this.imagePath + 'dhxtree_skyblue/');
+		structureTree.loadJSON('json/structure.default.json', function(){
+			structureTree.openItem('report');
+		});
+
+		// data source tree
+		var dataSourceTree = tabDataSource.attachTree();
+		dataSourceTree.setImagePath(this.imagePath + 'dhxtree_skyblue/');
+		dataSourceTree.loadJSON('json/datasource.default.json', function(){
+			dataSourceTree.openItem('q1');
 		});
 
 		var cellC = this.layout.cells('c');
